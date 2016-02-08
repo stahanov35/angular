@@ -1,0 +1,21 @@
+{
+  "name": "angular",
+  "version": "0.0.0",
+  "description": "test project for training",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stahanov35/angular.git"
+  },
+  "author": "Denis Kolesnik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stahanov35/angular/issues"
+  },
+  "homepage": "https://github.com/stahanov35/angular#readme",
+  "devDependencies": {
+    "bower": "^1.7.7"
+  }
+}
