@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="propCrossApp">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 	<title>Angular</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="row col-xs-12">
-			<h1>Angular start page</h1>
-			<p>Bunding {{ 'test' + ' string' }}</p>
+			<h1>Property Search Page</h1>
+			<h2>Initial State</h2>
+			<p class="h4">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, suscipit. Placeat ea voluptatum laborum soluta. Quam at mollitia id aliquam qui illo eaque dolor tempore facilis amet, vero quas ea!
+			</p>
+			<form action="#" method="POST" role="form">
+				<div class="form-group">
+					<input type="text" class="form-control" id="" placeholder="Prooerty">
+					<input type="hidden" class="form-control" id="" value="" placeholder="My location">
+				</div>
+				<div class="form-group">
+					<div class="btn-group">
+						<button type="submit" class="btn btn-warning">Go</button>
+						<button type="button" class="btn btn-default">My location</button>
+					</div>
+				</div>
+			</form>
+			<table class="table" ng-controller="SearchData">
+				<thead>
+					<th>Name</th>
+					<th>Count</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="prop in property">
+						<td>
+							{{ prop.name }}
+						</td>
+						<td>
+							{{ prop.count }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>
