@@ -5,6 +5,7 @@
 	<title>Angular</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
 	<script src="app.js"></script>
 </head>
 <body>
@@ -15,34 +16,42 @@
 			<p class="h4">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, suscipit. Placeat ea voluptatum laborum soluta. Quam at mollitia id aliquam qui illo eaque dolor tempore facilis amet, vero quas ea!
 			</p>
-			<form action="#" method="POST" role="form">
-				<div class="form-group">
-					<input type="text" class="form-control" id="" placeholder="Prooerty">
-					<input type="hidden" class="form-control" id="" value="" placeholder="My location">
-				</div>
-				<div class="form-group">
-					<div class="btn-group">
-						<button type="submit" class="btn btn-warning">Go</button>
-						<button type="button" class="btn btn-default">My location</button>
+			<div ng-controller="SearchData">
+				<form action="#" method="GET" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Property"
+							ng-model="place">
+						<input type="hidden" class="form-control" value="" placeholder="My location">
 					</div>
-				</div>
-			</form>
-			<table class="table" ng-controller="SearchData">
-				<thead>
-					<th>Name</th>
-					<th>Count</th>
-				</thead>
-				<tbody>
-					<tr ng-repeat="prop in property">
-						<td>
-							{{ prop.name }}
-						</td>
-						<td>
-							{{ prop.count }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+					<div class="form-group">
+						<div class="btn-group">
+							<button type="submit" class="btn btn-warning"
+									ng-click="getLocationData()">Go</button>
+							<button type="button" class="btn btn-default">My location</button>
+						</div>
+					</div>
+				</form>
+				<div class="bg-danger"
+							ng-show="boolStatusCode"><p>There are was a problem with yuor search</p></div>
+				<table class="table">
+					<thead>
+						<th>Name</th>
+						<th>Count</th>
+					</thead>
+					<tbody>
+						<tr 
+							ng-hide="boolStatusCode"
+							ng-repeat="location in locations">
+							<td>
+								{{ location.title }}
+							</td>
+							<td>
+								{{ totalResults }}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>
