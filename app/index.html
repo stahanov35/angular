@@ -1,45 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="propCrossApp">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-	<title>Angular</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="app.css">
-	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
-	<script src="app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <title>Angular</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="app.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="row col-xs-12">
-			<h1 class="text-center">Property Cross</h1>
-			<br>
-			<p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location</p>
-			<hr>
-			<div ng-controller="SearchData">
-				<form action="#" method="GET" role="form">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Property"
-							ng-model="place">
-					</div>
-					<div class="form-group">
-							<button type="submit" class="btn btn-warning"
-									ng-click="getLocationData($event)">Go</button>
-							<button type="button" class="btn btn-default" data-my-location="Oxford"
-									ng-click="getLocationData($event)">My location</button>
-					</div>
-				</form>
-				<div class="bg-danger"
-						ng-show="boolStatusCode">There are was a problem with your search.</div>
-					<ul>
-						<li 
-							ng-hide="boolStatusCode"
-							ng-repeat="location in locations">
-								{{ location.title }} ({{ totalResults }})
-						</li>
-					</ul>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row col-xs-12">
+      <h1 class="text-center">Property Cross</h1>
+      <br>
+      <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location</p>
+      <hr>
+      <div ng-controller="SearchData">
+        <form action="#" method="GET" role="form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Property"
+              ng-model="place">
+          </div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-warning"
+                  ng-click="getLocationData(place)">Go</button>
+              <button type="button" class="btn btn-default"
+                  ng-click="getLocationData('Oxford')">My location</button>
+          </div>
+        </form>
+        <div class="bg-danger"
+            ng-show="searchError">There are was a problem with your search.</div>
+          <div class="panel panel-default"
+               ng-hide="boolStatusCode">
+            <div class="panel-body">
+              <ul>
+                <li 
+                  ng-repeat="location in locations">
+                    <a href="#" ng-click="showResult()">{{ location.title }} ({{ totalResults }})</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Result list -->
+          <div class="panel panel-default"
+              ng-show="bollShowResult">
+            <div class="panel-body">
+              <ol>
+                <li
+                    ng-repeat="property in listings">
+                      <h2>{{ property.lister_name }}</h2>
+                      <img ng-src="{{ property.img_url }}" alt="">
+                </li>
+              </ol>
+
+              
+              <nav>
+                <ul class="pagination">
+                  <li 
+                      ng-if="stepPages*2 <= data.response.total_pages">
+                        <a href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                  </li>
+                  <li
+                      ng-repeat="start in getTimes(stepPages) track by $index">
+                        <a href="#" ng-click="getLocationData($index + 1)">{{ $index + 1 }}</a>
+                  </li>
+                  <li>
+                    <a href="#" disabled>&hellip;</a>
+                  </li>
+                  <li
+                      ng-repeat="end in getTimes(stepPages) track by $index"
+                      ng-click="getLocationData($index)">
+                        <a href="#">{{ data.response.total_pages - stepPages + $index }}</a>
+                  </li>
+                  <li 
+                      ng-if="stepPages*2 <= data.response.total_pages">
+                        <a href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
