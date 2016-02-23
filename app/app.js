@@ -40,16 +40,16 @@ propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $htt
 									jsonCallback +
 									'&page=' + $scope.currentPage).
 					success(function(data){
-						$scope.data = data;
-						response 	= $scope.data.response;
-						$scope.locations = response.locations;
-						$scope.totalResults = response.total_results;
-						$scope.listings = response.listings;
-						$scope.searchError = (parseInt(response.application_response_code) < 212) ? false : true;
+						$scope.data 					= data;
+						response 							= $scope.data.response;
+						$scope.locations 			= response.locations;
+						$scope.totalResults 	= response.total_results;
+						$scope.listings 			= response.listings;
+						$scope.searchError 		= (parseInt(response.application_response_code) < 212) ? false : true;
 						console.log(response);
 					}).
 					error(function (data) {
-						$scope.data = 'Request failed';
+						$scope.data 					= 'Request failed';
 					});
 		} else {
 			$scope.searchError = true;

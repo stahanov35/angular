@@ -1,3 +1,84 @@
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	flex: 1;
+}
+header{
+}
+body > main{
+	overflow: hidden;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	flex: 1;
+}
+body > main > section{
+	overflow: hidden;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	flex: 1;
+}
+section .panel{
+	overflow: hidden;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	flex: 1;
+}
+section .panel-body{
+	flex: 1;
+	overflow: auto;
+}
 .bg-danger{
 	padding: 15px;
 }
+img{
+	display: block;
+	height: auto;
+	width: 100%;
+}
+ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.property-list li{
+	padding-bottom: 20px;
+}
+.property-list h3{margin-top: 0;}
