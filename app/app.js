@@ -9,36 +9,25 @@ var propCrossApp = angular.module('propCrossApp', []);
 * Declare controller for search result
 */
 propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $http) {
-	$scope.currentPage 	= 1;
-	$scope.stepPages 		= 2;
-
-	var baseUrl 			= 'http://api.nestoria.co.uk/api',
-			jsonCallback 	= '&callback=JSON_CALLBACK';
+	$scope.stepPages 		= 3;
+	var baseUrl 				= 'http://api.nestoria.co.uk/api',
+			jsonCallback 		= '&callback=JSON_CALLBACK';
 
 	$scope.getLocationData = function (myLocation, pageNumber) {
-		var args = Array.prototype.slice.call(arguments),
-				response;
+		var response,
+				page = pageNumber || 1;
 
-		// detect place and page arguments
-		for (var i = args.length - 1; i >= 0; i--) {
-			if (typeof args[i] === 'string') {
-				$scope.place = args[i];
-			}
-
-			if (typeof args[i] === 'number') {
-				$scope.currentPage = args[i];
-			}
-		}
+		$scope.place = myLocation;
 
 		if (!angular.isUndefined($scope.place)) {
 			console.log(baseUrl + '?action=search_listings&country=uk&encoding=json&listing_type=buy&place_name=' + 
 									$scope.place + 
 									jsonCallback +
-									'&page=' + $scope.currentPage);
+									'&page=' + pageNumber);
 			$http.jsonp(baseUrl + '?action=search_listings&country=uk&encoding=json&listing_type=buy&place_name=' + 
 									$scope.place + 
 									jsonCallback +
-									'&page=' + $scope.currentPage).
+									'&page=' + pageNumber).
 					success(function(data){
 						$scope.data 					= data;
 						response 							= $scope.data.response;
