@@ -3,22 +3,23 @@
 /**
 * propCrossApp Module
 */
-var propCrossApp = angular.module('propCrossApp', ['ngRoute']);
+var propCrossApp 					= angular.module('propCrossApp', ['ngRoute', 'propCrossControllers']);
+var propCrossControllers 	= angular.module('propCrossControllers', []);
 
-propCrossApp.config(['$routeProvider', function ($routeProvider) {
-	// $routeProvider.when('/search', {
-	// 	templateUrl: 'search/search.tpl.html'
-	// });
-	// $routeProvider.when('/main', {
-	// 	templateUrl: 'main/main.tpl.html'
-	// });
-	// $routeProvider.otherwise({ redirectTo: '/main' });
-}]);
+propCrossApp.config(function ($routeProvider) {
+	$routeProvider.when('/search', {
+		templateUrl: 'search/search.tpl.html'
+	});
+	$routeProvider.when('/main', {
+		templateUrl: 'main/main.tpl.html'
+	});
+	$routeProvider.otherwise({ redirectTo: '/' });
+});
 
 /**
 * Declare controller for search result
 */
-propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $http) {
+propCrossControllers.controller('SearchData', ['$scope', '$http', function ($scope, $http) {
 	$scope.stepPages 		= 3;
 	var baseUrl 				= 'http://api.nestoria.co.uk/api',
 			jsonCallback 		= '&callback=JSON_CALLBACK';
