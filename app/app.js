@@ -3,7 +3,17 @@
 /**
 * propCrossApp Module
 */
-var propCrossApp = angular.module('propCrossApp', []);
+var propCrossApp = angular.module('propCrossApp', ['ngRoute']);
+
+propCrossApp.config(['$routeProvider', function ($routeProvider) {
+	// $routeProvider.when('/search', {
+	// 	templateUrl: 'search/search.tpl.html'
+	// });
+	// $routeProvider.when('/main', {
+	// 	templateUrl: 'main/main.tpl.html'
+	// });
+	// $routeProvider.otherwise({ redirectTo: '/main' });
+}]);
 
 /**
 * Declare controller for search result

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="app.js"></script>
 </head>
 <body>
@@ -22,7 +23,6 @@
         <hr>
         <div class="row">
           <div class="col-xs-6">
-
             <!-- Search form -->
             <form action="#" method="GET" role="form">
               <div class="form-group row">
@@ -70,6 +70,18 @@
                 </ul>
               </div>
             </div>
+          </div>
+          <div class="col-xs-6" ng-if="false">
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/main">main</a>
+                  <a class="navbar-brand" href="/search">search</a>
+                </div>
+              </div>
+            </nav>
+            <div ng-view></div>
           </div>
         </div>
       </div>
