@@ -1,4 +1,3 @@
-<main class="main">
   <header>
     <div class="container">
       <br>
@@ -9,23 +8,25 @@
           <!-- Search form -->
           <form action="#" method="GET" role="form">
             <div class="form-group row">
-              <div class="col-xs-6">
+              <div class="col-xs-12">
                 <!-- @TODO: Make as country object -->
-                <select name="country">
-                  <option value="UK" selected="selected">UK</option>
-                  <option value="Australia">Australia</option>
-                  <option value="Brasil">Brasil</option>
-                  <option value="Deutschland">Deutschland</option>
-                  <option value="España">España</option>
-                  <option value="France">France</option>
-                  <option value="India">India</option>
-                  <option value="Italia">Italia</option>
-                  <option value="Mexico">Mexico</option>
-                </select>
-              </div>
-              <div class="col-xs-6">
-                <input type="text" class="form-control" placeholder="Property"
+                <div class="form-group">
+                  <select name="country">
+                    <option value="UK" selected="selected">UK</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Deutschland">Deutschland</option>
+                    <option value="España">España</option>
+                    <option value="France">France</option>
+                    <option value="India">India</option>
+                    <option value="Italia">Italia</option>
+                    <option value="Mexico">Mexico</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Property"
                   ng-model="place">
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -54,18 +55,6 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6">
-          <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <a class="navbar-brand" href="/main">main</a>
-                <a class="navbar-brand" href="/search">search</a>
-              </div>
-            </div>
-          </nav>
-          <div ng-view></div>
-        </div>
       </div>
     </div>
   </header>
@@ -77,39 +66,7 @@
         ng-show="bollShowResult">
       <div class="panel-body">
         <!-- Pagination -->
-        <nav>
-          <ul class="pagination">
-            <li 
-                ng-if="+data.response.page !== 1"
-                ng-click="getLocationData(place, +data.response.page - 1)">
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-            </li>
-            <li
-                ng-repeat="start in getTimes(stepPages) track by $index">
-                  <a href="#" ng-click="getLocationData(place, +data.response.page + $index)">{{ +data.response.page + $index }}</a>
-            </li>
-            <li>
-              <a href="#" disabled="disabled">&hellip;</a>
-            </li>
-            <li
-                ng-repeat="end in getTimes(stepPages) track by $index">
-                  <a href="#" 
-                      ng-click="getLocationData(place, data.response.total_pages - stepPages + $index + 1)">
-                      {{ data.response.total_pages - stepPages + $index + 1 }}
-                  </a>
-            </li>
-            <li 
-                ng-if="+data.response.page !== data.response.total_pages">
-                  <a href="#" aria-label="Next"
-                      ng-click="getLocationData(place, +data.response.page + 1)">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-            </li>
-          </ul>
-        </nav>
-  
+        <pagination></pagination>
         <!-- Property list -->
         <ul class="property-list">
           <li class="row"
@@ -141,4 +98,3 @@
       </div>
     </div>
   </section>
-</main>

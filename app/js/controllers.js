@@ -1,7 +1,9 @@
 'use strict'
 
 /**
-* Declare controller for search result
+*  Module Search
+*
+* Description
 */
 propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $http) {
 	$scope.stepPages 		= 3;
@@ -22,8 +24,8 @@ propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $htt
 			$http.jsonp(baseUrl + '?action=search_listings&country=uk&encoding=json&listing_type=buy&place_name=' + 
 									$scope.place + 
 									jsonCallback +
-									'&page=' + pageNumber).
-					success(function(data){
+									'&page=' + pageNumber)
+					.success(function(data){
 						$scope.data 					= data;
 						response 							= $scope.data.response;
 						$scope.locations 			= response.locations;
@@ -31,8 +33,8 @@ propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $htt
 						$scope.listings 			= response.listings;
 						$scope.searchError 		= (parseInt(response.application_response_code) < 212) ? false : true;
 						console.log(response);
-					}).
-					error(function (data) {
+					})
+					.error(function (data) {
 						$scope.data 					= 'Request failed';
 					});
 		} else {
@@ -43,7 +45,14 @@ propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $htt
 	$scope.showResult = function () {
 		$scope.bollShowResult = true;
 	}
+}]);
 
+/**
+*  Module Pagination
+*
+* Description
+*/
+propCrossApp.controller('Pagination', ['$scope', function ($scope) {
 	// Pagination
 	// @TODO: Rewrite as component
 	$scope.prev = function () {
@@ -55,4 +64,4 @@ propCrossApp.controller('SearchData', ['$scope', '$http', function ($scope, $htt
 	$scope.getTimes=function(n){
 	  return new Array(n);
 	};
-}])
+}]);

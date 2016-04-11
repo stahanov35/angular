@@ -1,0 +1,32 @@
+<nav ng-controller="Pagination">
+  <ul class="pagination">
+    <li 
+        ng-if="+data.response.page !== 1"
+        ng-click="getLocationData(place, +data.response.page - 1)">
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+    </li>
+    <li
+        ng-repeat="start in getTimes(stepPages) track by $index">
+          <a href="#" ng-click="getLocationData(place, +data.response.page + $index)">{{ +data.response.page + $index }}</a>
+    </li>
+    <li>
+      <a href="#" disabled="disabled">&hellip;</a>
+    </li>
+    <li
+        ng-repeat="end in getTimes(stepPages) track by $index">
+          <a href="#" 
+              ng-click="getLocationData(place, data.response.total_pages - stepPages + $index + 1)">
+              {{ data.response.total_pages - stepPages + $index + 1 }}
+          </a>
+    </li>
+    <li 
+        ng-if="+data.response.page !== data.response.total_pages">
+          <a href="#" aria-label="Next"
+              ng-click="getLocationData(place, +data.response.page + 1)">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+    </li>
+  </ul>
+</nav>

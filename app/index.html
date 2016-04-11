@@ -3,20 +3,31 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
   <title>Angular</title>
+  <!-- Favicon -->
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQzjRAC4g5gAIBikAEQD/ACIYqwAfGW4AAAAFAPPy+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVmYzN3d3AABVVmMzd3cAABiFZjOIdwAAGIVWY4h3AAAYhVVmiDcAACiIhVaIMwAASIiIVYgzAERIgohViGN3BEiIiBiIhjAASIiCGIiGAAAEREIhFVAAAABERCIRAAAAAAREQiAAAAAAAEREAAAAAAAABEAAAAD//wAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAAAAAACAAQAAwAMAAOAHAADwDwAA+B8AAPw/AAD+fwAA" rel="icon" type="image/x-icon" />
+  <!-- App stylesheet -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
+  <!-- Header -->
   <header class="header container">
-    <h1 class="text-center"><a href="#/main">Property Cross</a></h1>
+    <h1 class="text-center"><a href="#">Property Cross</a></h1>
   </header>
-  
-  <ng-view></ng-view>
+  <!-- Main section -->
+  <main class="main"
+        ng-include src="'views/main.tpl.html'"
+        ng-controller="SearchData">
+  </main>
+  <!-- <ng-view></ng-view> -->
+
   <!-- Placed at the bootom of the docu,ent so the pages load faster -->
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <!-- Main App -->
   <script src="app.js"></script>
   <script src="js/controllers.js"></script>
+  <script src="js/components/pagination/pagination.js"></script>
 </body>
 </html>
